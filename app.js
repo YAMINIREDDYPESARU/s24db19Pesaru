@@ -6,9 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var icecreamRouter=require('./routes/icecream');
-var gridRouter=require('./routes/grid');
-var pickRouter=require('./routes/pick');
+var foodRouter = require('./routes/food');
+var gridRouter = require('./routes/grid');
+var pickRouter = require('./routes/pick');
 
 var app = express();
 
@@ -24,9 +24,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/icecream', icecreamRouter);
+app.use('/food', foodRouter);
 app.use('/grid', gridRouter);
 app.use('/pick', pickRouter);
+
+require('dotenv').config();
+const connectionString = process.env.MONGO_CON ;
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,3 +57,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
