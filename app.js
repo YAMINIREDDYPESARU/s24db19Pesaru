@@ -4,11 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var icecream = require("./models/icecream");
+
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var foodRouter = require('./routes/food');
+var icecreamRouter = require('./routes/icecream');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -24,21 +29,61 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/food', foodRouter);
+app.use('/icecream', icecreamRouter);
 app.use('/grid', gridRouter);
 app.use('/pick', pickRouter);
+app.use('/resource', resourceRouter);
 
 require('dotenv').config();
+var mongoose = require('mongoose');
 const connectionString = process.env.MONGO_CON ;
-mongoose = require('mongoose');
 mongoose.connect(connectionString);
 //Get the default connection
 var db = mongoose.connection;
 //Bind connection to error event
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once("open", function(){
-console.log("Connection to DB succeeded")
+  console.log("Connection to DB succeeded");
+  // recreateDB();
+
+
 });
+
+
+async function recreateDB(){
+// Delete everything
+await icecream.deleteMany();
+
+
+let instance1 = new icecream({icecream_name: 'Mango', icecream_color:'yellow', icecream_price: 4});
+instance1.save().then(doc=>{
+console.log("First object saved")}
+).catch(err=>{
+console.error(err)
+});
+ 
+ 
+let instance2 = new icecream({icecream_name: 'Chocolate', icecream_color:'Brown', icecream_price: 5});
+instance2.save().then(doc=>{
+console.log("Second object saved")}
+).catch(err=>{
+console.error(err)
+});
+ 
+ 
+let instance3 = new icecream({icecream_name: 'Black current', icecream_color:'Purple', icecream_price: 5});
+instance3.save().then(doc=>{
+console.log("Third object saved")}
+).catch(err=>{
+console.error(err)
+});
+}
+
+let reseed = true;
+if (reseed) {recreateDB();}
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

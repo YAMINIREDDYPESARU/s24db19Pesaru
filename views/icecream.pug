@@ -5,12 +5,12 @@ block content
   
   div.container-fluid
     div.row
-      -
-        let results = [
-          { icecream_name: 'Mango', icecream_color: 'Yellow', icecream_price: 4 },
-          { icecream_name: 'Chocolate', icecream_color: 'Brown', icecream_price:5 },
-          { icecream_name: 'Black Current', icecream_color: 'Purple', icecream_price: 5 }
-        ]
+      //- -
+      //-   let results = [
+      //-     { icecream_name: 'Mango', icecream_color: 'Yellow', icecream_price: 4 },
+      //-     { icecream_name: 'Chocolate', icecream_color: 'Brown', icecream_price:5 },
+      //-     { icecream_name: 'Black Current', icecream_color: 'Purple', icecream_price: 5 }
+      //-   ]
         
       each icecream,index in results
         .col-sm-2(onclick=`buy(${index})`)
@@ -20,7 +20,8 @@ block content
 
   a(href="/") Back to index
 
-    script. 
-        function buy(index) {
-            alert(`You purchased item ${index}`);
-        }
+  script.
+    function buy(index) {
+        alert(`You purchased item ${index}`);
+    }
+
