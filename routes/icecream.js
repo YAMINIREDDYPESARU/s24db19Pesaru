@@ -4,7 +4,7 @@ var router = express.Router();
 
 const icecream_controlers= require('../controllers/icecream');
 
-router.get('/', icecream_controlers.icecream_list );
+router.get('/', icecream_controlers.icecream_view_all_page );
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
