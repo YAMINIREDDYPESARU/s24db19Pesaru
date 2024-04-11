@@ -7,6 +7,19 @@ var icecream_controller = require('../controllers/icecream');
 // GET resources base.
 router.get('/', api_controller.api);
 /// icecream ROUTES ///
+
+
+// // POST request for creating a icecream.
+// router.post('/icecream', icecream_controller.icecream_create_post);
+// // GET request for one icecream.
+// router.get('/icecream/:id', icecream_controller.icecream_detail);
+
+// router.put('/icecream/:id', icecream_controller.icecream_update_put);
+
+// GET request for list of all icecream items.
+// router.get('/icecream', icecream_controller.icecream_list);
+
+
 // POST request for creating a icecream.
 router.post('/icecream', icecream_controller.icecream_create_post);
 // DELETE request to delete icecream.
@@ -17,4 +30,6 @@ router.put('/icecream/:id', icecream_controller.icecream_update_put);
 router.get('/icecream/:id', icecream_controller.icecream_detail);
 // GET request for list of all icecream items.
 router.get('/icecream', icecream_controller.icecream_list);
+
+
 module.exports = router;

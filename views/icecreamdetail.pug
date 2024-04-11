@@ -1,0 +1,23 @@
+extends layout
+block content
+  h1= title
+  if toShow == null
+    h2 No instance to show
+  else
+    - let icecream_id = toShow._id
+    - let icecream_name = toShow.icecream_name
+    - let icecream_color = toShow.icecream_color
+    - let icecream_price = toShow.icecream_price
+    div
+      div.row
+        div.icecreamAttr.mr-3 icecream ID is:
+        div #{icecream_id}
+      div.row
+        div.icecreamAttr.mr-3 icecream_name is:
+        div #{icecream_name}
+      div.row
+        div.icecreamAttr.mr-3 icecream_color is:
+        div #{icecream_color}
+      div.row
+        div.icecreamAttr.mr-3 icecream_price is:
+        div #{icecream_price}

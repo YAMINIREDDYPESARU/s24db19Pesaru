@@ -14,8 +14,8 @@ block content
         
       each icecream,index in results
         .col-sm-2(onclick=`buy(${index})`)
-          p Dress Type: #{icecream.icecream_name}
-          p Size: #{icecream.icecream_color}
+          p Type: #{icecream.icecream_type}
+          p Size: #{icecream.icecream_size}
           p Price: $#{icecream.icecream_price.toFixed(2)}
 
   a(href="/") Back to index
