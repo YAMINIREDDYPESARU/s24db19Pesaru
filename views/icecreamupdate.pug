@@ -1,13 +1,10 @@
 extends layout
 block content
   h1= title
-   if (toShow == null)
-        h2 No instance to delete
-    else
-  - let icecreamid = toShow._id
-  - let icecream_name = toShow.icecream_name
-  - let icecream_color = toShow.icecream_color
-  - let icecream_price = toShow.icecream_price
+    - let icecreamid = toShow._id
+    - let icecream_name = toShow.icecream_name
+    - let icecream_color = toShow.icecream_color
+    - let icecream_price = toShow.icecream_price
   div.row(class='mb-2')
     div.mr-1 ID is
     div #{icecreamid}
@@ -20,7 +17,7 @@ block content
       label.icecreamAttr(for='icecream_color') icecream color
       input#icecream_color(type='text', name='icecream_color', value= icecream_color )
     div.form-group
-      label.icecreamAttr(for='icecream_price') icecream price
+      label.icecreamAttr(for='icecream_price') icecream price 
       input#icecream_price(type='number', name='icecream_price', value= icecream_price )
     input(type="submit")
   script.
